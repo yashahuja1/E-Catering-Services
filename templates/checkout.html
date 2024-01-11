@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+<div class="container ">
+    <br><br><br><br><br><br>
+    <h3 class="text-info"><strong>Order Information :</strong></h3>
+    <br>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <th style="color:gainsboro">Item Name</th>
+        <th style="color:gainsboro">Quantity</th>
+        <th style="color:gainsboro">Price</th>
+        </thead>
+        {% for x in items %}
+        <tr style="background-color:#0c0b09">
+            <td style="color:gainsboro">{{x.0}}</td>
+            <td style="color:gainsboro">{{x.1}}</td>
+            <td style="color:gainsboro">&#x20b9; {{x.2}}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    <form action="{% url 'checkout' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="oid" value="{{oid}}" hidden>
+                <br>
+                <p > Total Amount: ₹{{ totalprice }}</p>
+                <input name="tp" type="text" value="{{totalprice}}" hidden>
+                <br>
+                <br>
+                <span><strong>Delivery Address:</strong></span>
+                <br>
+                <br>
+                <div><input type="text" name="address" style="width:60%; height: 60px;" required/></div>
+                <br>
+    <!--					<a href="{% url 'orderplaced' %}" class="btn btn-success btn-lg" value="Order" name="submit">Order</a>-->
+    <!--					<input type="submit" class="btn btn-success btn-lg" value="PayBill" name="submit">-->
+        <button type="submit"  class="btn btn-success btn-lg" name="submit">Paybill</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

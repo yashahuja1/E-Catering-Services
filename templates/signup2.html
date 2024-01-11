@@ -1,0 +1,49 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block content %}
+
+<br>
+<br>
+<main id="main">
+    <!--    for rest signup-->
+    <section id="signup2" class="signup1">
+    <div class="container" data-aos="fade-up">
+      <div class="row justify-content-center"> 
+            <div class="card-content p-2">
+                <div class="card-title text-uppercase text-center py-3">
+                    <h1>For Restaurant</h1>
+                    <h3><font size="5">SIGNUP</font></h3>
+                    {% if error_message %}
+                    <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <br>
+                </div>
+                <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="position-relative has-icon-right">
+
+                        <label class="control-label col-sm-8">{{ field.label_tag }}</label>
+                        <div class="col-sm-7">{{ field }}</div>
+                    </div>
+                    {% endfor %}
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-success btn-sm">Sign Up</button>
+                </form>
+            </div>
+        </div>
+      </div>  
+
+        <div class="card-footer text-center py-3">
+            <p class="text-warning mb-0">Already have an account? <a href="{% url 'restlogin' %}"> Login here</a></p>
+        </div>
+    </section>
+
+    <!--Start Back To Top Button-->
+    <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
+    <!--End Back To Top Button-->
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container col-md-8">
+    <img src="{{user.restaurant.Restaurant_Logo.url}}" height="60%" width="60%">
+  </div>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-11 toppad">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-info "><strong>{{user.restaurant.Restaurant_Name}}
+                        </strong></h1>
+                </div>
+                <br>
+                <div class="panel-body">
+                    <div class="row ">
+
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information table-bordered" style="color: rgb(206, 178, 178);">
+                                <tbody>
+                                <tr>
+                                    <td>User Name:</td>
+                                    <td>{{user.username}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Restaurant Name:</td>
+                                    <td>{{user.restaurant.Restaurant_Name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Info:</td>
+                                    <td>{{user.restaurant.Info}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Minimum Order:</td>
+                                    <td>{{user.restaurant.Min_order }}</td>
+                                </tr>
+
+                                <tr>
+                                <td>Location:</td>
+                                <td>{{user.restaurant.Location}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td><a href="#">{{user.email}}</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Restaurant Logo:</td>
+                                    <td>{{user.restaurant.Restaurant_Logo}}</td>
+                                </tr>
+
+                                   <tr>
+                                    <td>Status:</td>
+                                    <td>{{user.restaurant.status}}</td>
+                                </tr>
+
+                                   <tr>
+                                    <td>Approved:</td>
+                                    <td>{{user.restaurant.approved}}</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <a class="btn btn-success btn-lg" href="{% url 'updaterestaurant' user.id %}">Edit</a>
+                                    </div>
+                                    <!--<div class="col">
+                                       <a class="btn btn-success btn-lg" href="">Complete profile</a>
+                                    </div>-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+{% endblock%}

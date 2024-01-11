@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container col-md-8">
+
+    <div class="row">
+        <div class=" col-md-11 toppad">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-info "><strong>{{user.customer.First_Name}}
+                        {{user.customer.Last_Name}}</strong></h1>
+                </div>
+                <br>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information table-bordered" style="color: rgb(206, 178, 178);">
+                                <tbody>
+                                <tr>
+                                    <td>User Name:</td>
+                                    <td>{{user.username}}</td>
+                                </tr>
+                                <tr>
+                                    <td>First Name:</td>
+                                    <td>{{user.customer.First_Name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name:</td>
+                                    <td>{{user.customer.Last_Name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>City:</td>
+                                    <td>{{user.customer.City }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Address:</td>
+                                    <td>{{user.customer.Address}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td><a href="#">{{user.email}}</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number:</td>
+                                    <td>{{user.customer.Phone}}
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <a class="btn btn-success btn-lg"
+                                           href="{% url 'updatecustomer' user.id %}">Edit</a>
+                                    </div>
+                                    <!--<div class="col">
+                                       <a class="btn btn-success btn-lg" href="">Complete profile</a>
+                                    </div>-->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+{% endblock%}

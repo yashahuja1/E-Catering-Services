@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Order{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<center><u><h2>Order Status:</h2></u></center>
+        <center><table class="table table-hover ">
+            <tr style="color: white;">
+                <th scope="col">Total Amount</th>
+                <th scope="col">Ordered By</th>
+                <th scope="col">Distributor</th>
+                <th scope="col">Status</th>
+                
+            </tr>
+    {% for j in order%}
+            <tr scope="row" style="color: white;">
+                <td>{{ j.Total_amount }}</td>
+                <td>{{ j.OrderedBy }}</td>
+                <td>{{ j.Restaurant_Names }}</td>
+                <td>{{ j.status }}</td>
+            </tr>   
+    {% endfor %}
+        </table></center>
+</div>
+{% endblock %}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>E-Catering</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.">
+    <link href="{% static 'assets1/css/style.css' %}" rel="stylesheet" type="text/css" media="all">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet'
+          type='text/css'>
+    <!--Animation-->
+
+    <link href="assets/css/animate.css" rel='stylesheet' type='text-center/css'>
+    <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Hind&display=swap" rel="stylesheet">
+    <!-- //web fonts -->
+    <!-- //web fonts -->
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
+    <!-- JS Files-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets1/img/logo.png' %}">
+
+    <!--Start Back To Top Button-->
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
+    <!--End Back To Top Button-->
+
+</head>
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+        <h1 class="logo mr-auto"><a href="{% url 'index1' %}"><b> E-Catering </b></a></h1>
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li class=""><a href="{% url 'index1' %}">Home</a></li>
+                <li><a href="{% url 'foodzone' %}">FoodZone</a></li>
+                <li><a href="{% url 'about'  %}">About</a></li>
+                <li><a href="{% url 'service' %}">Service</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'custprofile' %}">My Profile</a></li>
+                <li><a href="{% url 'custorder' %}">Order</a></li>
+                {% else %}
+                <li class="book-a-table text-center"><a href="{% url 'forsignup' %}">Signup</a></li>
+                <li class="book-a-table text-center"><a href="{% url 'custlogin' %}">Customer</a></li>
+                <li class="book-a-table text-center"><a href="{% url 'restlogin' %}">Restaurant</a></li>
+                {% endif %}
+            </ul>
+        </nav><!-- .nav-menu -->
+    </div>
+</header><!-- End Header -->
+<main id="main">
+    {% block content %}
+    {% endblock %}
+</main>
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-info">
+                        <h3>E-Catering</h3>
+                        <br>
+                        <p> E-Catering,1st Floor ,Sanidhaya Bulding ,Opp Uco Bank, Near M.J.Library ,Ashram Road
+                            Ahmedabad 380014 <br>
+                            <!-- <strong>Phone:</strong> +1 5589 55488 55<br>-->
+                            <br>
+                            <strong>Email:</strong> CustomCuisine123@gmail.com<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'index1' %}">Home</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'about' %}">About us</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'service' %}">Services</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="{% url 'contact' %}">Contact Us</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Birthday Catering</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Wedding Service</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Party Catering</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Event Catering</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Corporate Service</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Catering On Demand</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span> E-Catering</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            Designed by E-Catering
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+<!-- Vendor JS Files -->
+<script src="{% static 'assets1/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets1/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets1/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+<script src="{% static 'assets1/vendor/php-email-form/validate.js' %}"></script>
+<script src="{% static 'assets1/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets1/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'assets1/vendor/venobox/venobox.min.js' %}"></script>
+<script src="{% static 'assets1/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'assets1/js/main.js' %}"></script>
+
+
+</body>
+</html>

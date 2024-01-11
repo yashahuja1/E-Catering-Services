@@ -1,0 +1,113 @@
+{% extends 'base2.html'%}
+
+{% block title %}Menu{% endblock %}
+
+{% block content %}
+<section id="menu" class="menu section-bg">
+    <div class="container" data-aos="fade-up">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 class="text-info mb-2"><font size="6"><strong>{{rname}}</strong></font></h1>
+        <p>
+            <font size="3"><b>Info : </b><a class="text-success"><strong>{{rinfo|safe}}</strong></a>
+                <br/>
+                <b>Location: </b><a class="text-success"><strong>{{rlocation}}</strong></a>
+                <br>
+                <b>Min Order:</b> <a class="text-success">&#x20b9;{{rmin}}</a>
+            </font>
+        </p>
+    </div>
+
+    <br>
+
+    <div class="container ">
+        <h3 class="text-danger"><font size="5"><strong>Menu</strong></font></h3>
+        <br>
+        <table class="table table-hover table-bordered">
+            <thead>
+            <th style="color:gainsboro" class="text-center">Item Name</th>
+            <th style="color:gainsboro"class="text-center" >Category</th>
+            <th style="color:gainsboro" class="text-center">Price</th>
+            <th style="color:gainsboro" class="text-center">Add</th>
+            </thead>
+            {% for x in items %}
+            <tr style="background-color:#0c0b09">
+                <td style="color:gainsboro">{{x.0}}</td>
+                <td style="color:gainsboro">{{x.1}}</td>
+                <td style="color:gainsboro">&#x20b9; {{x.2}}</td>
+                {% if x.4 == "Open" %}
+                {% if x.5 > 0 %}
+                <td style="color:gainsboro">
+                    <div class="form-group row mr-auto" >
+                        
+                        <div class="input-group-btn mx-auto">
+                            <input type="button" id="down" class="btn btn-default btn-block btn-light" value=" - "
+                                    onclick="if(document.querySelector('#itemno{{x.3}}').innerHTML>0){
+                	document.querySelector('#itemno{{x.3}}').innerHTML--;
+                	minuscounter('{{x.3}}');
+                	}">
+                                <span class="glyphicon glyphicon-minus"></span></button>
+                        </div>
+                        <span id='itemno{{x.3}}'  style="padding-right:15%;" > 0 </span>
+                        <div class="input-group-btn" style="padding-right:25%;">
+                            <input type="button" id="up" class="btn btn-default btn-block btn-light" value=" + "
+                                    onclick="
+                if(document.querySelector('#itemno{{x.3}}').innerHTML<{{x.5}}){
+                	document.querySelector('#itemno{{x.3}}').innerHTML++;
+                	pluscounter('{{x.3}}');
+                	}"><span class="glyphicon glyphicon-plus"></span></button>
+                        </div>
+                    </div>
+                </td>
+                {% else %}
+                <td>
+                    NA
+                </td>
+                {% endif %}
+                {% else %}
+                <td>
+                    Closed
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+    <div class="container">
+        <!--		<input type="button" class="btn btn-success btn-lg pull-right" onclick="storearray();" value="Checkout"/>-->
+        <a href="{% url 'checkout' %}" class="btn btn-success btn-lg pull-right" onclick="storearray();">checkout</a>
+    </div>
+    <br>
+
+    <script type="text/javascript">
+	
+var cart = [];
+	function pluscounter(pk){
+		cart.push(pk);
+		console.log(cart);
+	};
+	function minuscounter(pk){
+		if (cart!=[]){
+			var removeindex = cart.indexOf(pk);
+			cart.splice(removeindex, 1);
+			}
+			console.log(cart);
+	};
+
+	function storearray(){
+		if(cart.length === 0)
+		{
+			alert('No items selected');
+			return false;
+		}
+		document.cookie = "cart="+cart+";Path=/";
+		document.cookie ="rest={{ Restaurant_Names }};Path=/";
+		window.location = "/checkout/";
+	};
+
+    </script>
+</section>
+{% endblock %}

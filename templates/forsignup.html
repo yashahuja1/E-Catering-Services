@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<main id="main">
+    <section id="forsignup" class="forsignup">
+        <div class="container" data-aos="fade-up">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-6 order-1 order-lg-1" data-aos="zoom-in" data-aos-delay="100">
+                    <h1>Feeling Hungry</h1>
+                    <h4>Register Now<br>
+                        and <br>
+                        Order Online</h4>
+                    <br>
+                    <br>    
+                    <button class="btn btn-success"><a href="{% url 'signup1' %}" style="color: cornsilk;">Register</a></button>
+
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-2 content">
+                    <h1>Be A Partner</h1>
+                    <h4>Join Us Today<br>
+                        and <br>
+                        Increase Your Sale
+                    </h4>
+                    <br>
+                    <br>
+                    <button class="btn btn-success"><a href="{% url 'signup2' %}" style="color: cornsilk;">Join Us</a></button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}
